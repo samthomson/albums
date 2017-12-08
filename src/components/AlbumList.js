@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
@@ -11,7 +11,10 @@ class AlbumList extends Component {
         const sAPIUrl = 'https://rallycoding.herokuapp.com/api/music_albums';
         
         axios.get(sAPIUrl)
-        .then(response => this.setState({ albums: response.data }));
+        .then(response => {
+            console.log('got data from server ok');
+            return this.setState({ albums: response.data });
+        });
     }
 
     renderAlbums() {
